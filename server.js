@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const productRoutes = require("./routes/productRoutes");
@@ -7,11 +8,17 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// MongoDB Connection
-mongoose.connect("mongodb://127.0.0.1:27017/productDB")
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
-
+// MongoDB Atlas Connection
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("✅ MongoDB Atlas Connected Successfully");
+  })
+  .catch((err) => {
+    console.log("❌ MongoDB Connection Error:", err);
+  });
+app.get("/", (req, res) => {
+  res.send("API is running successfully 🚀");
+});
 // Routes
 app.use("/api/products", productRoutes);
 

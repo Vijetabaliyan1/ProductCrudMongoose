@@ -2,16 +2,17 @@
   "name": "productcrudmongoose",
   "version": "1.0.0",
   "description": "",
- "main": "server.js",
+  "main": "server.js",
   "scripts": {
-  "start": "node server.js",
-  "dev": "nodemon server.js"
-},
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "mongoose": "^9.2.3"
   },
